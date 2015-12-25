@@ -1,5 +1,6 @@
 <?php
 //在显示登录界面之前，首先判断是否保存了用户登录信息，如果有，则自动登录
+error_reporting(0);
 header('Content-type: text/html; charset=utf-8');
 include('conn_mysql.php');
 session_start();
@@ -10,14 +11,14 @@ $row=mysqli_fetch_array($result1);
 if ($row)
 {
     if($row[power]==1){
-    header("refresh:0;url=http://mobapp.vemic.com/private.php");
+    header("refresh:0;url=../AppShop/private.php");
 
      }
     if($row[power]==2){
-        header("refresh:0;url=http://mobapp.vemic.com/manage.php");
+        header("refresh:0;url=../AppShop/manage.php");
     }
     if($row[power]==3){
-        header("refresh:0;url=http://mobapp.vemic.com/adduser.php");
+        header("refresh:0;url=../AppShop/adduser.php");
     }
 }
 ?>

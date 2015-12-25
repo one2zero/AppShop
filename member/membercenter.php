@@ -10,7 +10,7 @@ $row=mysqli_fetch_array($result1);
 if ($row)
 {}
 else{
-    header("refresh:1;url=http://mobapp.vemic.com/login.php");
+    header("refresh:1;url=../login.php");
     exit;
 
 }

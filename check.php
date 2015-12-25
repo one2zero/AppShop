@@ -1,6 +1,6 @@
 <?php
 //在显示登录界面之前，首先判断是否保存了用户登录信息，如果有，则自动登录
-
+//error_reporting(0);
 header('Content-type: text/html; charset=utf-8');
 include('conn_mysql.php');
 session_start();
@@ -104,16 +104,25 @@ if($_POST['submit']){
 }
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
+    
+    $ServerUrl=$_SERVER['DOCUMENT_ROOT'];
 
     if($_POST['release']=="1"){
         if($ar[$lcy-1] =="ipa")
         {
             //$destination_folder="./new_app/pub_ipa/"; //上传文件路径
-            $destination_folder="./apptemp/"; //上传文件路径
+            $destination_folder="/AppShop/new_app/pub_ipa/"; //上传文件路径
             $file = $_FILES["upfile"];
             $filename=$file["tmp_name"];
             $pinfo=pathinfo($file["name"]);
             $ftype=$pinfo['basename'];
+            $destination_folder = $ServerUrl.$destination_folder;
+            
+            if(!file_exists($destination_folder))
+            {
+                mkdir($destination_folder);
+            }
+            
             $destination = $destination_folder.$ftype;
             if(!move_uploaded_file ($filename, $destination))
             {
@@ -124,8 +133,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             $na=explode('.',$app_name1);
             $su=array_pop($na);
             $string = implode('.',$na);
-		   $make_dir_command="/Applications/XAMPP/xamppfiles/htdocs/focus-app/apptemp/auto_pub_bid '{$_SESSION['UserName']}' $app_name1 $string  ";
-           exec($make_dir_command,$output,$return);
+		   $make_dir_command=$destination_folder."apptemp/auto_pub_bid '{$_SESSION['UserName']}' $app_name1 $string  ";
+//            echo $make_dir_command;
+//            exit;
+//           exec($make_dir_command,$output,$return);
 //            if($return==0){
 //				
 //				echo "Plist文件生成成功！";
@@ -142,11 +153,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
         }
         else{
-            $destination_folder="./new_app/pub_apk/"; //上传android文件路径
+            $destination_folder="/AppShop/new_app/pub_apk/"; //上传android文件路径
             $file = $_FILES["upfile"];
             $filename=$file["tmp_name"];
             $pinfo=pathinfo($file["name"]);
             $ftype=$pinfo['basename'];
+            
+            $destination_folder = $ServerUrl.$destination_folder;
+            
+            if(!file_exists($destination_folder))
+            {
+                mkdir($destination_folder);
+            }
             $destination = $destination_folder.$ftype;
             if(!move_uploaded_file ($filename, $destination))
             {

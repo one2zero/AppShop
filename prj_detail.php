@@ -44,9 +44,10 @@ $prj_title = mysqli_fetch_array($result1);
                 <td style="line-height:200%" ><?php echo mb_substr($row[add_time],0,10,"utf-8"); ?></td>
                 <?php
                 if($ex[$num-1]=="ipa"){
+                    $ServerUrl=$_SERVER['DOCUMENT_ROOT'];
                     $su=array_pop($ex);
                     $str = implode('.',$ex);
-                    $ipa= "itms-services://?action=download-manifest&url=https:192.168.1.175/Sites/new_app/pub_plist/";
+                    $ipa= "itms-services://?action=download-manifest&url=https:localhost/AppShop/new_app/pub_plist/";
                     $plist=$str.".plist";
                     $down=$ipa.$plist;
 
@@ -56,9 +57,9 @@ $prj_title = mysqli_fetch_array($result1);
                 }
                 ?>
 <!--
-                <td style="line-height:200%" ><a href="itms-services://?action=download-manifest&url=http:192.168.21.13/plist/<?php //echo $str ?>.plist">安装</a></td>
+//                <td style="line-height:200%" ><a href="itms-services://?action=download-manifest&url=http:192.168.21.13/plist/<?php //echo $str ?>.plist">安装</a></td>
 
-                <td style="line-height:200%" ><a href="auto-adroidfile/<?php echo $v ?>">安装</a></td>
+//                <td style="line-height:200%" ><a href="auto-adroidfile/<?php echo $v ?>">安装</a></td>
  -->
                 <td style="line-height:200%" ><a href="<?php echo $down ?>">安装</a></td>
             </tr>
@@ -71,7 +72,7 @@ $prj_title = mysqli_fetch_array($result1);
 </div>
     <div id="sheet">
         <hr/>
-        <a href="index.php">返回首页</a>|<a href="prj_list.php">列表页面</a>
+        <a href="index.php">返回首页</a>|<a href="prj_list.php">列表页面</a>|<a href="/AppShop/new_app/server.crt">下载证书</a>
     </div>
   </div>
 </body>

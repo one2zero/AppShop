@@ -10,13 +10,13 @@ $row=mysqli_fetch_array($result1);
 if ($row)
 {
     if($row[power]==1){
-        header("url=http://mobapp.vemic.com/private.php");
+        header("url=../AppShop/private.php");
     }
     if($row[power]==2){
-        header("url=http://mobapp.vemic.com/member/membercenter.php");
+        header("url=../AppShop/member/membercenter.php");
     }
     if($row[power]==3){
-        header("url=http://mobapp.vemic.com/member/membercenter.php");
+        header("url=./AppShop/member/membercenter.php");
     }
 }
 ?>
@@ -88,14 +88,14 @@ if ($row)
                 setcookie("RememberCookiePassword",md5($Password1),(time()+43200));
             }
             // 登录成功，页面转到管理页面
-            header("refresh:1;url=http://mobapp.vemic.com/succes.php");
+            header("refresh:1;url=../AppShop/succes.php");
 
             }
         else
         {
              $query="update new_user_info set LastLoginFail=now() where user_name='$UserName1'";
              $result1=mysqli_query($conn,$query);
-             header("refresh:3;url=http://mobapp.vemic.com/login.php");
+             header("refresh:3;url=../login.php");
              echo " 密码错误，请重新输入 <br>3 秒后自动返回 ";
 
         }
