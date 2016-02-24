@@ -53,6 +53,7 @@ a{
 
 #index{
     margin: auto auto;
+    /*background-color: gray*/
 }
 #title{
     background-color:#82b4f8;
@@ -95,6 +96,7 @@ a{
     width: 200px;
     height: 600px;
     font-weight: bold;
+    /*background-color: gray;*/
 }
 .detail{
     text-align: center;
@@ -102,13 +104,13 @@ a{
 }
 
 #main{
-    margin-top: 5px;
-    margin-left: 5px;
+    margin-top: -600px;
+    margin-left: 400px;
     width: 910px;
     height: 600px;
     float: left;
     padding-top: 50px;
-	
+	/*background-color: red*/
 	
 }
 

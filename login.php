@@ -24,33 +24,64 @@ if ($row)
 ?>
 <html>
 <head>
-    <title>用户登录</title>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"  />
-    <link href="css/login.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
-<div id="title">
-    用户登录
-</div>
-<div id="content">
-<form name="form1" method="post" action="login_go.php">
-    用户名：<input name="UserName" type="text" size="20" id="UserName" required aria-required="true" placeholder="eg:lichuangye" ><br/><br/>
-    密&nbsp;&nbsp;码：<input name="Password" type="Password" size="20" id="Password" required aria-required="true"><br/><br/>
-	<!--
-    <input name="KeepInfo" type="checkbox" value="KeepInfo"> 保存登录信息 ( 1
-    天 )<br><br>
-		-->
-    <input name="Submit" type="submit" value="登录">
+    <meta charset="utf-8">
+    <title>AppShop</title>
+    <meta name="description" content="Flat UI Kit Free is a Twitter Bootstrap Framework design and Theme, this responsive framework includes a PSD and HTML version."/>
 
-</form>
-</div>
-<div id="dev">
-    <a href="index.php">返回首页</a><br><br>
-    <p>与域账号不关联</p><br>
-<p>帮助联系：jianwen@pipapai.com</p>
-</div>
-</body>
+    <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
+
+    <!-- Loading Bootstrap -->
+    <link href="/AppShop/Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Loading Flat UI -->
+    <link href="/AppShop/Flat-UI-master/dist/css/flat-ui.min.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="AppShop/Flat-UI-master/img/favicon.ico">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="dist/js/vendor/html5shiv.js"></script>
+      <script src="dist/js/vendor/respond.min.js"></script>
+    <![endif]-->
+  </head>
+ <body>
+    
+    <div class="container">
+
+        <nav class="navbar navbar-inverse navbar-lg navbar-embossed" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-9">
+            </button> -->
+            <a class="navbar-brand" href="index.php">AppShop</a>
+          </div>
+          
+        </div>
+      </nav>
+
+        <form role="form" method="post" action="login_go.php">
+          <div class="login-form">
+            <div class="form-group">
+              <input name="UserName" type="text" class="form-control login-field" value="" placeholder="用户名" id="login-name" />
+              <label class="login-field-icon fui-user" for="login-name"></label>
+            </div>
+
+            <div class="form-group">
+              <input name="Password" type="password" class="form-control login-field" value="" placeholder="密码" id="login-pass" />
+              <label class="login-field-icon fui-lock" for="login-pass"></label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block">登录</button>
+
+            <p class="text-center"><small>如有问题，请联系：jianwen@pipapai.com</small></p>
+          </div>
+        </form>
+
+    </div>
+    <!-- /.container -->
+
+  </body>
+</html>
 </html>
 <?php
 include('conn_mysql.php');

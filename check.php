@@ -111,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         if($ar[$lcy-1] =="ipa")
         {
             //$destination_folder="./new_app/pub_ipa/"; //上传文件路径
-            $destination_folder="/AppShop/new_app/pub_ipa/"; //上传文件路径
+            $destination_folder="/new_app/pub_ipa/"; //上传文件路径
             $file = $_FILES["upfile"];
             $filename=$file["tmp_name"];
             $pinfo=pathinfo($file["name"]);
@@ -153,7 +153,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
         }
         else{
-            $destination_folder="/AppShop/new_app/pub_apk/"; //上传android文件路径
+            $destination_folder="/new_app/pub_apk/"; //上传android文件路径
             $file = $_FILES["upfile"];
             $filename=$file["tmp_name"];
             $pinfo=pathinfo($file["name"]);

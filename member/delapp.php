@@ -21,6 +21,11 @@ else{
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"  />
     <link href="../css/membercenter.css" rel="stylesheet" type="text/css" />
+    <!-- Loading Bootstrap -->
+    <link href="/AppShop/Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Loading Flat UI -->
+    <link href="/AppShop/Flat-UI-master/dist/css/flat-ui.min.css" rel="stylesheet">
 </head>
 <body id="bd"   >
 <div id="index">
@@ -29,9 +34,6 @@ else{
         <div id="top">
             <a id="top1" href="../index.php">首页</a>
             <a id="top2" href="../logout.php">你好：<?php echo $_SESSION['UserName'];  ?>!退出登录</a>
-        </div>
-        <div id="gtitle">
-            <a  href="applist.php">应用列表</a>&nbsp;|&nbsp;<a  href="../device/mobdevice.php">移动设备</a>
         </div>
     </div>
     <div id="list">

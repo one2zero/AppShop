@@ -3,7 +3,7 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
+/*html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
@@ -22,38 +22,30 @@ time, mark, audio, video {
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
-}
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-    display: block;
-}
+}*/
+
 body {
-    line-height: 1;
+    /*line-height: 1;*/
     background-image: url("../pic/3.png");
 }
-ol, ul {
-    list-style: none;
-}
-blockquote, q {
-    quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-    content: '';
-    content: none;
-}
-table ,td,th{
+
+/*table {
     border-collapse: collapse;
     border-spacing: 0;
     margin: auto auto;
     text-align: center;
 	border:1px solid #87CEEB;
 }
+th,td{
+    width:20px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: auto auto;
+    text-align: center;
+    border:1px solid #87CEEB;
+}*/
 
 
-a{
-    text-decoration: none;
-}
 #top{
     margin: auto auto;
     background-color:#aacefb ;
@@ -62,14 +54,14 @@ a{
     font-size: 100%;
     color: #ffffff;
 }
-#top1{
+/*#top1{
     padding-left:200px;
 }
 #top2{
     float:right;
     padding-right:200px;
 
-}
+}*/
 #title{
     margin: auto auto;
     background-color:#82b4f8 ;
@@ -80,10 +72,7 @@ a{
     font-size: 200%;
     color: #ffffff;
 }
-#content{
-    margin-top: 5px;
 
-}
 #sheet{
 	margin:auto auto;
 	margin-top:25px;

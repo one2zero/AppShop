@@ -28,48 +28,113 @@ if($ipd=="192.168.21.62"){
 
 ?>
 <html>
+
+
+
 <head>
-<title>移动应用商店</title>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"  />
-<link href="css/new.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+    <title>AppShop--Pipapai.inc</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Loading Bootstrap -->
+    <link href="/AppShop/Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Loading Flat UI -->
+    <link href="/AppShop/Flat-UI-master/dist/css/flat-ui.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="../../dist/js/vendor/html5shiv.js"></script>
+      <script src="../../dist/js/vendor/respond.min.js"></script>
+    <![endif]-->
 </head>
+
 <body  >
-<div id="index">
-    <div id="title" >
- 移动应用商店
-    </div>
-    <div id="content">
-        <div class="wk">
-            <div class="img1"><a href="prj_list.php"><img src="app/xm.png"></a></div>
-            <div class="wz"><a href="prj_list.php">内测应用</a></div>
+<div class="container">
+
+      <nav role="navigation" class="navbar navbar-inverse navbar-embossed navbar-lg">
+        <div class="navbar-header">
+          <button data-target="#bs-example-navbar-collapse-17" data-toggle="collapse" class="navbar-toggle" type="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="#" class="navbar-brand">AppShop</a>
         </div>
-        <div class="wk">
-            <div class="img1"><a href="private.php"><img src="app/sy.png"></a></div>
-            <div class="wz"><a href="private.php">私有应用</a></div>
-        </div>
-        <div class="wk">
-            <div class="img1"><a href="public.php"><img src="app/gc.png"></a></div>
-            <div class="wz"><a href="public.php">自动编译</a></div>
-        </div>
-        <div class="wk">
-            <div class="img1"><a href="aipa.php"><img src="app/yl.png"></a></div>
-            <div class="wz"><a href="aipa.php">每日构建</a></div>
-        </div>
-    </div>
-    <div id="dev">
+         <?php
+        if($_SESSION[UserName]!=''){
+        ?> 
+              
+
+            <div id="bs-example-navbar-collapse-17" class="collapse navbar-collapse">
+              <p class="navbar-text navbar-right"><a class="navbar-link" href="logout.php">退出</a></p>
+              <p class="navbar-text navbar-right"><a class="navbar-link" href="./member/membercenter.php"><?php echo $_SESSION[UserName]; ?></a></p>
+            </div>
         <?php
-        if($_SESSION[UserName]==''){
-            echo '<a href="login.php">登录</a>&nbsp;|&nbsp;<a href="./member/membercenter.php">管理中心</a>';
-        }
-        else{
-            echo '<a href="logout.php">退出</a>&nbsp;|&nbsp;<a href="./member/membercenter.php">管理中心</a>';
-        }
+        }else{
         ?>
+            <div id="bs-example-navbar-collapse-17" class="collapse navbar-collapse">
+              <p class="navbar-text navbar-right"><a class="navbar-link" href="login.php">登录</a></p>
+            </div>
+        <?php
+        }
+        
+        ?>
+      </nav>
+
+
+
+    <div class="row">
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <a href="prj_list.php"><img src="app/xm.png" alt="Compas" class="tile-image big-illustration"></a>
+            <div class="caption">
+              <h3>公开测试应用</h3>
+              <p>所有发布前的应用，公开发布，分别在开发网、测试网、和外网测试完成后才可以发布</p>
+              <p><a class="btn btn-primary btn-lg btn-block" href="prj_list.php">前往</a></p>
+            </div>
+          </div>
+        </div>
+
+
+        <?php
+        if($_SESSION[UserName]!=''){
+            ?>
+
+            <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <a href="private.php"><img src="app/sy.png" alt="Compas" class="tile-image big-illustration"></a>
+            <div class="caption">
+              <h3>私有应用</h3>
+              <p>所有发布前的应用，公开发布，分别在开发网、测试网、和外网测试完成后才可以发布</p>
+              <p><a class="btn btn-primary btn-lg btn-block" href="private.php">前往</a></p>
+            </div>
+          </div>
+        </div>
+        <?php
+        }
+        
+        ?>
+        
     </div>
+
+
 </div>
+
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/AppShop/Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/AppShop/Flat-UI-master/dist/js/flat-ui.min.js"></script>
+
+    <script src="/AppShop/Flat-UI-master/assets/js/application.js"></script>
+
 </body>
 </html>
+
+
 <?php
 include('conn_mysql.php');
 $sql="select *  from new_count_num ";

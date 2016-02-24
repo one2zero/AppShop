@@ -88,7 +88,7 @@ if ($row)
                 setcookie("RememberCookiePassword",md5($Password1),(time()+43200));
             }
             // 登录成功，页面转到管理页面
-            header("refresh:1;url=../AppShop/succes.php");
+            header("refresh:1;url=../AppShop/index.php");
 
             }
         else
@@ -102,7 +102,7 @@ if ($row)
     }
     else
     {
-            header("refresh:3;url=http://mobapp.vemic.com/login.php");
+            header("refresh:3;url=http:../login.php");
             echo " 用户不存在，如需帮助联系：6719. ";
             echo "<br>3 秒后自动返回 ";
             exit;
