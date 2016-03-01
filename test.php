@@ -1,22 +1,64 @@
-<?php
-function dlf_form() {
- 
-?>
- 
-<form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
-    <div class="login-form">
-        <div class="form-group">
-            <input name="login_name" type="text" class="form-control login-field" value="" placeholder="Username" id="login-name" />
-            <label class="login-field-icon fui-user" for="login-name"></label>
-        </div>
- 
-        <div class="form-group">
-            <input  name="login_password" type="password" class="form-control login-field" value="" placeholder="Password" id="login-pass" />
-            <label class="login-field-icon fui-lock" for="login-pass"></label>
-        </div>
-        <input class="btn btn-primary btn-lg btn-block" type="submit"  name="dlf_submit" value="Log in" />
-</form>
-</div>
-<?php
-}
-?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Flat UI Free</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Loading Bootstrap -->
+    <link href="/AppShop/Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Loading Flat UI -->
+    <link href="/AppShop/Flat-UI-master/dist/css/flat-ui.min.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="AppShop/Flat-UI-master/img/favicon.ico">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="../../dist/js/vendor/html5shiv.js"></script>
+      <script src="../../dist/js/vendor/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <div class="container">
+
+      <h4>Tooltips</h4>
+
+      <h6>Text Example</h6>
+
+      <p class="muted">Tight pants next level keffiyeh <a title="Default tooltip" data-toggle="tooltip" href="#">you probably</a>
+         haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan,
+         mcsweeney's fixie sustainable quinoa 8-bit american apparel <a title="Another tooltip" data-toggle="tooltip" href="#">have a</a>
+          terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa,
+          four loko mcsweeney's cleanse vegan chambray. A really ironic artisan
+          <a title="Another one here too" data-toggle="tooltip" href="#">whatever keytar</a>, scenester farm-to-table banksy
+           Austin <a title="" data-toggle="tooltip" href="#" data-original-title="The last tip!">twitter handle</a> freegan cred raw denim single-origin coffee viral.
+    </p>
+
+      <h6>Four directions</h6>
+
+      <button title="" data-placement="left" data-toggle="tooltip" class="btn btn-default mrs" type="button" data-original-title="Tooltip on left">Tooltip on left</button>
+      <button title="Tooltip on top" data-placement="top" data-toggle="tooltip" class="btn btn-default mrs" type="button">Tooltip on top</button>
+      <button title="Tooltip on bottom" data-placement="bottom" data-toggle="tooltip" class="btn btn-default mrs" type="button">Tooltip on bottom</button>
+      <button title="Tooltip on right" data-placement="right" data-toggle="tooltip" class="btn btn-default mrs" type="button">Tooltip on right</button>
+
+
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/AppShop/Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/AppShop/Flat-UI-master/dist/js/flat-ui.min.js"></script>
+
+    <script>
+      $(function () {
+        $('[data-toggle=tooltip]').tooltip();
+      });
+    </script>
+
+  </body>
+</html>

@@ -39,7 +39,7 @@ CREATE TABLE `new_user_info` (
 --  Records of `new_user_info`
 -- ----------------------------
 BEGIN;
-INSERT INTO `new_user_info` VALUES ('1', 'lichuangye', 'test1234', '1', '1', '3', '0', '0000-00-00 00:00:00', '2013-11-03 20:24:16', ''), ('4', 'tengna', 'tengxiaona', '1', '3', '2', '0', '0000-00-00 00:00:00', '2013-11-04 00:15:36', 'lichuangye'), ('5', 'liudongxiang', 'ldx123', '1', '2', '2', '0', '0000-00-00 00:00:00', '2013-11-05 11:16:21', 'lichuangye'), ('6', 'sunjianwen', 'sjw1234', '1', '2', '2', '0', '0000-00-00 00:00:00', '2013-11-05 16:33:04', 'lichuangye'), ('7', 'xiongjiangwei', 'xjwdev', '1', '2', '2', '0', '0000-00-00 00:00:00', '2013-11-05 16:34:06', 'lichuangye'), ('8', 'wuyu', 'wuyu', '1', '2', '2', '0', '2013-11-05 17:04:44', '2013-11-05 17:04:44', 'lichuangye'), ('9', 'shaoliying', 'xqsly', '1', '4', '2', '0', '0000-00-00 00:00:00', '2013-11-06 08:37:10', 'lichuangye'), ('10', 'lujingyu', '123123', '1', '2', '2', '0', '0000-00-00 00:00:00', '2013-11-06 15:49:51', 'lichuangye');
+INSERT INTO `new_user_info` VALUES ('1', 'sunjianwen', 'sunjianwen', '1', '1', '3', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

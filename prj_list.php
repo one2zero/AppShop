@@ -65,7 +65,9 @@ session_start();
             <a href="prj_detail.php?id=1"><img src="pri_logo/logo_pipapai.jpg" alt="Compas" class="tile-image big-illustration"></a>
             <div class="caption">
               <h3>枇杷派</h3>
-              <p>所有发布前的应用，公开发布，分别在开发网、测试网、和外网测试完成后才可以发布</p>
+              <p>海量职位实时更新，职位专业细分</p>
+              <p>靠谱工作随薪挑选，岗位精准推送</p>
+              <p>美好未来时刻掌握，好工作聊出来</p>
               <p><a class="btn btn-primary btn-lg btn-block" href="prj_detail.php?id=1">前往</a></p>
             </div>
           </div>
