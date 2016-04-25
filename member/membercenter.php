@@ -110,10 +110,11 @@ else{
                             <?php
                                 include('../conn_mysql.php');
                                 $sql="select * from new_config_prj ";
+                                mysql_query("SET NAMES UTF8"); 
                                 $result1=mysqli_query($conn,$sql);
                                 while($row = mysqli_fetch_array($result1)){
                                     ?>
-                                    <option value="<?php echo $row[prj_num] ?>"><?php echo $row[prj_name] ?></option>
+                                    <option name="project" value="<?php echo $row[prj_num] ?>"><?php echo $row[prj_name] ?></option>
                                     <?php
                                 }
                                 ?>

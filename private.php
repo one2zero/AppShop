@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 header('Content-type: text/html; charset=utf-8');
 include('conn_mysql.php');
 session_start();
@@ -7,11 +8,11 @@ $result1=mysqli_query($conn,$query);
 $row=mysqli_fetch_array($result1);
 if ($row)
 {
-    //header("url=http://mobapp.vemic.com/private.php");
+
 }
 else{
 
-    header("refresh:1;url=http://mobapp.vemic.com/login.php");
+    header("refresh:1;url=../login.php");
     exit;
 
 
@@ -20,71 +21,121 @@ else{
 ?>
 <html>
 <head>
-    <title>私有应用</title>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"  />
-    <link href="css/addfile_new.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+    <title>AppShop--Pipapai.inc</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Loading Bootstrap -->
+    <link href="/AppShop/Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Loading Flat UI -->
+    <link href="/AppShop/Flat-UI-master/dist/css/flat-ui.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="../../dist/js/vendor/html5shiv.js"></script>
+      <script src="../../dist/js/vendor/respond.min.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+    .text {
+        height: 65px;
+        overflow: hidden;
+        word-wrap: break-word;
+    }
+    </style>
 </head>
-<body> <div id="bd">
-    <div id="title">
-        <h4>私有应用</h4>
-    </div>
-    <div id="content">
-        <table  id="dw"  border="2" >
-            <tr>
-                <th>项目</th>
-                <th>应用平台</th>
-                <th>&nbsp;文件名&nbsp;</th>
-                <th>上传时间</th>
-                <th>&nbsp;安装&nbsp;</th>
-            </tr>
-            <?php
-            include('conn_mysql.php');
-            $sql="select distinct app_name,project,platform,add_time,prj_name from new_app_info as a  left join new_config_prj as b on a.project=b.prj_num where  app_status=1 and app_power=2 ORDER BY project asc,platform asc ";
-          @  $result1=mysqli_query($conn,$sql);
-            while($row = mysqli_fetch_array($result1)){
-                $v=$row[app_name];
-                $ex=explode('.',$v);
-                $num=count($ex);
-                if($ex[0]!=''){
-                    ?>
-                    <tr>
-                        <td style="line-height:200%" ><?php echo $row[prj_name]; ?></td>
-                        <td style="line-height:200%" ><?php echo $row[platform]; ?></td>
-                        <td style="line-height:200%" ><?php echo $v ; ?></td>
-                        <td style="line-height:200%" ><?php echo mb_substr($row[add_time],5,5,"utf-8"); ?></td>
-                        <?php
-                        if($ex[$num-1]=="ipa"){
-                            $su=array_pop($ex);
-                            $str = implode('.',$ex);
-                            $ipa= "itms-services://?action=download-manifest&url=http:192.168.21.89/new_app/pri_plist/";
-                            $plist=$str.".plist";
-                            $down=$ipa.$plist;
+<body> 
+<div class="container">
 
+      <nav role="navigation" class="navbar navbar-inverse navbar-embossed navbar-lg">
+        <div class="navbar-header">
+          <button data-target="#bs-example-navbar-collapse-17" data-toggle="collapse" class="navbar-toggle" type="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="../index.php" class="navbar-brand">AppShop</a>
+        </div>
+         <?php
+        if($_SESSION[UserName]!=''){
+        ?> 
+              
+
+            <div id="bs-example-navbar-collapse-17" class="collapse navbar-collapse">
+              <p class="navbar-text navbar-right"><a class="navbar-link" href="logout.php">退出</a></p>
+              <p class="navbar-text navbar-right"><a class="navbar-link" href="./member/membercenter.php"><?php echo $_SESSION[UserName]; ?></a></p>
+            </div>
+        <?php
+        }else{
+        ?>
+            <div id="bs-example-navbar-collapse-17" class="collapse navbar-collapse">
+              <p class="navbar-text navbar-right"><a class="navbar-link" href="login.php">登录</a></p>
+            </div>
+        <?php
+        }
+        
+        ?>
+      </nav>
+
+    <div class="tab-pane" id="tab2">
+                <p></p>
+
+                <div class="row">
+
+                <?php
+                    include('../conn_mysql.php');
+                    $sql="select distinct app_name,a.id,project,platform,add_time,prj_name,app_power from new_app_info as a  left join new_config_prj as b on a.project=b.prj_num where  app_status=1 and app_power in (1,2,3) and add_name ='{$_SESSION['UserName']}' ORDER BY add_time desc ";
+                    @   $result1=mysqli_query($conn,$sql);
+                    while($row = mysqli_fetch_array($result1)){
+                        $v=$row[app_name];
+                        $ex=explode('.',$v);
+                        $num=count($ex);
+                        if($ex[0]!=''){
+                ?>
+
+                        <div class="col-sm-6 col-md-4">
+                          <div class="thumbnail">
+                            <!-- <a href="prj_detail.php?id=1"><?php echo $row[platform]; ?><img src="pri_logo/logo_pipapai.jpg" alt="Compas" class="tile-image big-illustration"></a> -->
+                            <div class="caption">
+                              
+                              <!-- <div class="text"> -->
+                                <h4 class="text"><?php echo $v; ?></h4>
+                              <!-- </div> -->
+                            <?php
+                                if($row[platform]=='iPhone'|| $row[platform]=='iPad'){
+                                ?>
+                                    <h6><span class="fui-apple"></span>  <?php echo $row[platform]; ?></h6>
+                                <?php
+                                }else{
+                                ?>
+                                    <h6><span class="fui-android"></span>  <?php echo $row[platform]; ?></h6>
+                                <?php
+                                }
+                            ?>
+                              <p>项目名称：<?php echo $row[prj_name]; ?></p>
+                              <p>上传时间：<?php echo mb_substr($row[add_time],0,16,"utf-8"); ?></p>
+                              <p><a class="btn btn-primary btn-lg btn-block" href="../member/del_detail.php?id=<?php echo $row[id]; ?>">删除</a></p>
+                            </div>
+                          </div>
+                        </div>
+                 
+
+                <?php
+                            }
                         }
-                        else{
-                            $down="new_app/pri_apk/".$v;
-                        }
-                        ?>
-                        <!--
-                <td style="line-height:200%" ><a href="itms-services://?action=download-manifest&url=http:192.168.21.13/plist/<?php //echo $str ?>.plist">安装</a></td>
+                ?>
+                </div><!-- row -->
 
-                <td style="line-height:200%" ><a href="auto-adroidfile/<?php echo $v ?>">安装</a></td>
- -->
-                        <td style="line-height:200%" ><a href="<?php echo $down ?>">安装</a></td>
-                    </tr>
+            </div><!-- tab2 -->
+    </div>
 
-                    <?php
-                }
-            }
-            ?>
-        </table>
-    </div>
-    <div id="sheet">
-        <hr/>
-        <a href="index.php">返回首页</a>
-    </div>
-</div>
+    <script src="/AppShop/Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/AppShop/Flat-UI-master/dist/js/flat-ui.min.js"></script>
+
+    <script src="/AppShop/Flat-UI-master/assets/js/application.js"></script>
 </body>
 </html>
 

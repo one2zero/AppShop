@@ -73,7 +73,7 @@ $prj_title = mysqli_fetch_array($result1);
   <div class="row">
 
 <?php
-    $sql="select distinct app_name,platform,add_time,add_name from new_app_info where project=$prj and app_status=1 and app_power=1  ORDER BY platform asc,add_time desc ";
+    $sql="select distinct app_name,platform,add_time,add_name from new_app_info where project=$prj and app_status=1 and app_power=1  ORDER BY add_time desc ";
   @  $result1=mysqli_query($conn,$sql);
  while($row = mysqli_fetch_array($result1)){
     $v=$row[app_name];
@@ -81,13 +81,13 @@ $prj_title = mysqli_fetch_array($result1);
     $ex=explode('.',$v);
     $num=count($ex);
     if($ex[$num-1]=="ipa"){
-        // $ServerUrl=$_SERVER['DOCUMENT_ROOT'];
-        // $su=array_pop($ex);
-        // $str = implode('.',$ex);
-        // $ipa= "itms-services://?action=download-manifest&url=https:localhost/AppShop/new_app/pub_plist/";
-        // $plist=$str.".plist";
-        // $down=$ipa.$plist;
-        $down="../new_app/pub_ipa/".$v;
+        $ServerUrl=$_SERVER['DOCUMENT_ROOT'];
+        $su=array_pop($ex);
+        $str = implode('.',$ex);
+        $ipa= "itms-services://?action=download-manifest&url=https:192.168.0.110/new_app/pub_plist/";
+        $plist=md5($str).".plist";
+        $down=$ipa.$plist;
+        // $down="../new_app/pub_ipa/".$v;
 
     }
     else{
