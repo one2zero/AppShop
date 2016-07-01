@@ -1,7 +1,7 @@
 <?php 
 namespace CFPropertyList; 
 // 调试 
-error_reporting( E_ALL ); 
+error_reporting(0); 
 // error_reporting(0);
 // ini_set( ‘display_errors’, ‘on’ ); 
 /** 
@@ -63,12 +63,12 @@ class DownPlistCreator
 
 
   static public function readInfoPlist($infoPlistPath){
-    echo $infoPlistPath; 
-    if (is_readable($infoPlistPath)) {
-    echo 'The file is readable';
-} else {
-    echo 'The file is not readable';
-}
+//     echo $infoPlistPath; 
+//     if (is_readable($infoPlistPath)) {
+//     echo 'The file is readable';
+// } else {
+//     echo 'The file is not readable';
+// }
     // $infoPlist = new CFPropertyList($infoPlistPath,CFPropertyList::FORMAT_XML);
     $infoPlist = new CFPropertyList($infoPlistPath);
     

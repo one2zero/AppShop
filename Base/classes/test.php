@@ -1,7 +1,7 @@
 <?php 
 
 
-include_once ('../conn_mysql.php');
+include_once ('../../conn_mysql.php');
                                 $sql="select * from new_config_prj ";
                                 mysql_query("SET NAMES UTF8"); 
                                 if (!$conn) {

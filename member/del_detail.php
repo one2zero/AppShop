@@ -1,28 +1,71 @@
 <?php
 //在显示登录界面之前，首先判断是否保存了用户登录信息，如果有，则自动登录
+error_reporting(0);
 header('Content-type: text/html; charset=utf-8');
 include('../conn_mysql.php');
 session_start();
 ?>
 <html>
 <head>
-    <title>删除APP</title>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"  />
-    <link href="../css/addfile_new.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+    <title>AppShop--Pipapai.inc</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Loading Bootstrap -->
+    <link href="/AppShop/Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Loading Flat UI -->
+    <link href="/AppShop/Flat-UI-master/dist/css/flat-ui.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="../../dist/js/vendor/html5shiv.js"></script>
+      <script src="../../dist/js/vendor/respond.min.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+    .text {
+        height: 65px;
+        overflow: hidden;
+        word-wrap: break-word;
+    }
+    </style>
 </head>
-<body>
-<div id="bd">
-    <div id="top">
+<div  class="container">
 
-        <a id="top1" href="index.php">首页</a>
 
-        <a id="top2" href="../logout.php">你好：<?php echo $_SESSION['UserName'];  ?>!退出登录</a>
 
-    </div>
-    <div id="title">
-        <h4>删除APP</h4>
-    </div>
+    <nav role="navigation" class="navbar navbar-inverse navbar-embossed navbar-lg">
+        <div class="navbar-header">
+          <button data-target="#bs-example-navbar-collapse-17" data-toggle="collapse" class="navbar-toggle" type="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="../index.php" class="navbar-brand">AppShop</a>
+        </div>
+         <?php
+        if($_SESSION[UserName]!=''){
+        ?> 
+              
+
+            <div id="bs-example-navbar-collapse-17" class="collapse navbar-collapse">
+              <p class="navbar-text navbar-right"><a class="navbar-link" href="../logout.php">退出</a></p>
+              <p class="navbar-text navbar-right"><a class="navbar-link" href="./membercenter.php"><?php echo $_SESSION[UserName]; ?></a></p>
+            </div>
+        <?php
+        }else{
+        ?>
+            <div id="bs-example-navbar-collapse-17" class="collapse navbar-collapse">
+              <p class="navbar-text navbar-right"><a class="navbar-link" href="../login.php">登录</a></p>
+            </div>
+        <?php
+        }
+        
+        ?>
+      </nav>
+
 <?php
 header('Content-type: text/html; charset=utf-8');
 include('../conn_mysql.php');
@@ -30,21 +73,28 @@ $prj=$_GET['id'];
 $sql="update new_app_info set app_status=2 ,del_name='$_SESSION[UserName]',del_time=now() where id=$prj";
 $result1=mysqli_query($conn,$sql);
 if($result1){
-    echo "数据删除成功！";
-    echo '<br/>';
-    echo '<br/>';
-    echo '<br/>';
-    echo '<a href="../member/delapp.php">返回</a>';
+        ?>
+            <h4>数据删除成功！</h4>
+            <h4><a href="./membercenter.php">返回</a></h4>
+        <?php
 }
 else {
-    echo "数据删除失败！";
-    echo '<br/>';
-    echo '<br/>';
-    echo '<br/>';
-    echo '<a href="../member/delapp.php">返回</a>';
-    exit;
+        ?>
+            <h4>数据删除失败！</h4>
+            <h4><a href="./membercenter.php">返回</a></h4>
+        <?php
+    
 }
+    exit;
 ?>
 </div>
+
+
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/AppShop/Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/AppShop/Flat-UI-master/dist/js/flat-ui.min.js"></script>
+
+    <script src="/AppShop/Flat-UI-master/assets/js/application.js"></script>
 </body>
 </html>

@@ -34,7 +34,7 @@ session_start();
     </style>
 </head>
 <body>
-<div  id="container">
+<div class="container">
 
 
 
@@ -167,7 +167,7 @@ if($_POST['submit']){
     {
         ?>
             <h4>上传失败！请选择要上传的文件！</h4>
-            <h4><a href="./member/myapp.php">返回</a></h4>
+            <h4><a href="./member/membercenter.php">返回</a></h4>
         <?php
         exit;
     }
@@ -181,7 +181,7 @@ if($_POST['submit']){
     if($app_name1==$row[app_name]){
         ?>
             <h4>上传失败！<?php echo $app_name1 ?>该APP已经存在，请先删除后，再试一次</h4>
-            <h4><a href="./member/myapp.php">返回</a></h4>
+            <h4><a href="./member/membercenter.php">返回</a></h4>
         <?php
         exit;
     }
@@ -191,7 +191,7 @@ if($_POST['submit']){
     if($_POST[style] ==''){
         ?>
             <h4>上传失败！请选择安装平台！</h4>
-            <h4><a href="./member/myapp.php">返回</a></h4>
+            <h4><a href="./member/membercenter.php">返回</a></h4>
         <?php
         exit;
     }
@@ -200,7 +200,7 @@ if($_POST['submit']){
     else{
         ?>
             <h4>上传失败！文件类型不正确，请选择正确的文件类型！</h4>
-            <h4><a href="./member/myapp.php">返回</a></h4>
+            <h4><a href="./member/membercenter.php">返回</a></h4>
         <?php
         exit;
     }
@@ -239,17 +239,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             $destination = $destination_folder.$ftype;
             if(!move_uploaded_file ($filename, $destination))
             {
-                echo "移动文件出错";
+
+                ?>
+                    <h4>移动文件出错</h4>
+                    <h4><a href="./member/membercenter.php">返回</a></h4>
+                <?php
                 exit;
-				echo '<a href="./member/myapp.php">返回</a>';
             }
 
             $infoPlistPath = getInfoPlist($destination);
             $idAndversion =  CFPropertyList\DownPlistCreator::readInfoPlist($infoPlistPath);
             $fileNameMD5 = md5(basename($destination,".ipa"));
             $downPlistPath = '../new_app/pub_plist/'.$fileNameMD5.'.plist';
-            $downFileIcon = 'https://192.168.0.110/new_app/project_icon/'.$project_name.'.png';
-            CFPropertyList\DownPlistCreator::createDownPlist('https://192.168.0.110/new_app/pub_ipa/'.basename($destination),$downFileIcon,
+            $downFileIcon = 'https://192.168.1.175/new_app/project_icon/'.$project_name.'.png';
+            CFPropertyList\DownPlistCreator::createDownPlist('https://192.168.1.175/new_app/pub_ipa/'.basename($destination),$downFileIcon,
                 $downFileIcon,$downPlistPath,$idAndversion[0],$idAndversion[1]);
             $unloadPackgePath = $destination_folder.basename($destination,".ipa");
             deleteAll($unloadPackgePath);
@@ -296,9 +299,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             $destination = $destination_folder.$ftype;
             if(!move_uploaded_file ($filename, $destination))
             {
-                echo "移动文件出错";
+                ?>
+                    <h4>移动文件出错</h4>
+                    <h4><a href="./member/membercenter.php">返回</a></h4>
+                <?php
                 exit;
-				echo '<a href="./member/myapp.php">返回</a>';
             }
 
 
@@ -330,16 +335,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             $destination = $destination_folder.$ftype;
             if(!move_uploaded_file ($filename, $destination))
             {
-                echo "移动文件出错";
+                ?>
+                    <h4>移动文件出错</h4>
+                    <h4><a href="./member/membercenter.php">返回</a></h4>
+                <?php
                 exit;
-			    echo '<a href="./member/myapp.php">返回</a>';
             }
             $infoPlistPath = getInfoPlist($destination);
             $idAndversion =  CFPropertyList\DownPlistCreator::readInfoPlist($infoPlistPath);
             $fileNameMD5 = md5(basename($destination,".ipa"));
             $downPlistPath = '../new_app/pri_plist/'.$fileNameMD5.'.plist';
-            $downFileIcon = 'https://192.168.0.110/new_app/project_icon/'.$project_name.'.png';
-            CFPropertyList\DownPlistCreator::createDownPlist('https://192.168.0.110/new_app/pri_ipa/'.basename($destination),$downFileIcon,
+            $downFileIcon = 'https://192.168.1.175/new_app/project_icon/'.$project_name.'.png';
+            CFPropertyList\DownPlistCreator::createDownPlist('https://192.168.1.175/new_app/pri_ipa/'.basename($destination),$downFileIcon,
                 $downFileIcon,$downPlistPath,$idAndversion[0],$idAndversion[1]);
             $unloadPackgePath = $destination_folder.basename($destination,".ipa");
             deleteAll($unloadPackgePath);
@@ -354,9 +361,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             $destination = $destination_folder.$ftype;
             if(!move_uploaded_file ($filename, $destination))
             {
-                echo "移动文件出错";
+                ?>
+                    <h4>移动文件出错</h4>
+                    <h4><a href="./member/membercenter.php">返回</a></h4>
+                <?php
                 exit;
-			    echo '<a href="./member/myapp.php">返回</a>';
             }
         }
     }
@@ -366,14 +375,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     $app_name = $_FILES["upfile"]['name'];
     $sql="insert into new_app_info (project,platform,version,app_name,app_status,app_power,add_time,add_name,add_ip,del_name) values('$_POST[project]','$_POST[style]','','$app_name','1','$_POST[release]',now(),'$_SESSION[UserName]','$ipd','')";
     if(  $result=mysqli_query($conn,$sql)){
-        echo '<script>alert("恭喜！您的文件上传成功!")</script>';
+            ?>
+                <h4>恭喜！您的文件上传成功!</h4>
+                <h4><a href="./member/membercenter.php">返回</a></h4>
+            <?php
+            exit;
     }
     else{
-        echo "数据插入失败！";
-        echo '<hr/>';
-        echo $sql;
-        echo '<a href="./member/myapp.php">返回</a>';
+        ?>
+            <h4>数据插入失败！</h4>
+            <h4><a href="./member/membercenter.php">返回</a></h4>
+        <?php
         exit;
+
     }
 
 }

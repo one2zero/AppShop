@@ -61,7 +61,7 @@ $prj_title = mysqli_fetch_array($result1);
         }else{
         ?>
             <div id="bs-example-navbar-collapse-17" class="collapse navbar-collapse">
-              <p class="navbar-text navbar-right"><a class="navbar-link" href="../login.php">登录</a></p>
+              <p class="navbar-text navbar-right"><a class="navbar-link" href="login.php">登录</a></p>
             </div>
         <?php
         }
@@ -84,16 +84,20 @@ $prj_title = mysqli_fetch_array($result1);
         $ServerUrl=$_SERVER['DOCUMENT_ROOT'];
         $su=array_pop($ex);
         $str = implode('.',$ex);
-        $ipa= "itms-services://?action=download-manifest&url=https:192.168.0.110/new_app/pub_plist/";
+        $ipa= "itms-services://?action=download-manifest&url=https://192.168.1.175/new_app/pub_plist/";
         $plist=md5($str).".plist";
+
+        $down="../new_app/pub_ipa/".$v;
+        $md5file = md5_file($down);
+
         $down=$ipa.$plist;
-        // $down="../new_app/pub_ipa/".$v;
 
     }
     else{
         $down="../new_app/pub_apk/".$v;
+        $md5file = md5_file($down);
     }
-    $md5file = md5_file($down);
+    
     if($ex[0]!=''){
                 ?>
 

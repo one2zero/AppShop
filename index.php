@@ -118,7 +118,7 @@ if($ipd=="192.168.21.62"){
         ?>
         
     </div>
-<h4><a href="https://192.168.0.110/new_app/rootCA.crt">下载证书</a></h4>
+<h4><a href="https://192.168.1.175/new_app/pipapai.crt">下载证书</a></h4>
 
 </div>
 

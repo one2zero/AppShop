@@ -138,7 +138,7 @@ else{
 
                 <div class="form-group">
                   <input id="fo" name="upfile" type="file">
-                  <p class="text-danger"><small>允许上传的文件后缀为:ipa、apk(注意程序后缀为小写)</small></p>
+                  <p class="text-danger">不要使用中文文件名！！！<small>允许上传的文件后缀为:ipa、apk(注意程序后缀为小写)</small></p>
                 </div>
                 <!-- <button id="fo1" type="submit" class="btn btn-default">Submit</button> -->
                 <td><input id="fo1" type="submit"  name="submit"  value="&nbsp;上&nbsp;传&nbsp;文&nbsp;件&nbsp;"></td>
