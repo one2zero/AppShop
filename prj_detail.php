@@ -89,13 +89,20 @@ $prj_title = mysqli_fetch_array($result1);
 
         $down="../new_app/pub_ipa/".$v;
         $md5file = md5_file($down);
+        $fileZise = filesize($down)/(1024*1024);
+        $fileZise = sprintf("%.2f",$fileZise);
+        $fileZise = $fileZise." M";
 
         $down=$ipa.$plist;
+        // $down="../new_app/pub_ipa/".$v;
 
     }
     else{
         $down="../new_app/pub_apk/".$v;
         $md5file = md5_file($down);
+        $fileZise = filesize($down)/(1024*1024);
+        $fileZise = sprintf("%.2f",$fileZise);
+        $fileZise = $fileZise." M";
     }
     
     if($ex[0]!=''){
@@ -122,6 +129,7 @@ $prj_title = mysqli_fetch_array($result1);
                 <h4 class="text"><?php echo $v; ?></h4>
               <!-- </div> -->
               <p><small>MD5：<?php echo $md5file; ?></small></p>
+              <p>文件大小：<?php echo $fileZise; ?></p>
               <p>上传人：<?php echo $user; ?></p>
               <p>上传时间：<?php echo mb_substr($row[add_time],0,16,"utf-8"); ?></p>
               <p><a class="btn btn-primary btn-lg btn-block" href="<?php echo $down ?>">下载</a></p>

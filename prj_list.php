@@ -62,13 +62,20 @@ session_start();
     <div class="row">
         <div class="col-sm-6 col-md-4">
           <div class="thumbnail">
-            <a href="prj_detail.php?id=1"><img src="pri_logo/logo_pipapai.jpg" alt="Compas" class="tile-image big-illustration"></a>
+            <a href="prj_detail.php?id=1"><img src="pri_logo/logo_pipapai.png" alt="Compas" class="tile-image big-illustration"></a>
             <div class="caption">
-              <h3>枇杷派</h3>
-              <p>海量职位实时更新，职位专业细分</p>
-              <p>靠谱工作随薪挑选，岗位精准推送</p>
-              <p>美好未来时刻掌握，好工作聊出来</p>
+              <h3>呼啦呼</h3>
               <p><a class="btn btn-primary btn-lg btn-block" href="prj_detail.php?id=1">前往</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <a href="prj_detail.php?id=1"><img src="pri_logo/logo_zjzc.png" alt="Compas" class="tile-image big-illustration"></a>
+            <div class="caption">
+              <h3>走进职场</h3>
+              <p><a class="btn btn-primary btn-lg btn-block" href="prj_detail.php?id=2">前往</a></p>
             </div>
           </div>
         </div>
